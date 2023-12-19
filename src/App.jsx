@@ -84,6 +84,9 @@ const App = () => {
         ) {
           newPosition.x = otherPosition.x;
           newPosition.y = otherPosition.y + 35;
+
+          // ループを抜けて再帰呼び出し
+          return handleMove(id, newPosition);
         }
       }
     }
