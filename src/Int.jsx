@@ -5,16 +5,14 @@ function Int({ onAdd }) {
   const [num, setNum] = useState(0);
 
   useEffect(() => {
-    onAdd(`int ${val} = ${num};`);
+    onAdd(["int", val, num], val);
   }, [val, num, onAdd]);
 
   return (
     <div>
       <p>
-        int型の
-        <input type="text" value={val} onChange={(e) => setVal(e.target.value)} size="1" />
-        に
-        <input type="text" value={num} onChange={(e) => setNum(e.target.value)} size="1" />
+        int型の<input type="text" value={val} onChange={(e) => setVal(e.target.value)} size="1" />
+        に<input type="text" value={num} onChange={(e) => setNum(e.target.value)} size="1" />
         を加える
       </p>
     </div>
