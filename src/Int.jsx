@@ -11,7 +11,7 @@ function Int({ onAdd }) {
   return (
     <div>
       <p>
-        int型の<input type="text" value={val} onChange={(e) => setVal(e.target.value)} size="1" />
+        変数<input type="text" value={val} onChange={(e) => setVal(e.target.value)} size="1" />
         に<input type="text" value={num} onChange={(e) => setNum(e.target.value)} size="1" />
         を加える
       </p>

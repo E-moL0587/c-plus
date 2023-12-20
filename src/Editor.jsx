@@ -1,0 +1,39 @@
+import React from 'react';
+
+const Editor = ({ sortedCode }) => {
+
+  const editorStyle = {
+    fontFamily: 'Consolas, monospace',
+    backgroundColor: '#1e1e1e',
+    color: '#d4d4d4',
+    padding: '20px',
+    borderRadius: '5px',
+    maxWidth: '600px',
+    margin: 'auto',
+  };
+
+  const codeStyle = {
+    fontSize: '14px',
+    lineHeight: '1.6',
+  };
+
+  return (
+    <div style={editorStyle}>
+      <h2 style={{ color: '#569cd6' }}>Editor</h2>
+      <div style={codeStyle}>
+        {`#include<iostream>`}<br />
+        {`int main() {`}<br />
+        {sortedCode.map((item, index) => (
+          <div key={index}>
+            {item[0] === 'int' ? `　${item[0]} ${item[1]} = ${item[2]};` : ''}
+            {item[0] === 'cout' ? `　std::${item[0]} << ${item[1]};` : ''}
+          </div>
+        ))}<br />
+        {`　return 0;`}<br />
+        {`}`}<br />
+      </div>
+    </div>
+  );
+};
+
+export default Editor;
