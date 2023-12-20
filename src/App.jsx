@@ -60,11 +60,27 @@ const App = () => {
 
       <div>
         <h2>Terminal</h2>
-        {sortedCode.map((item, index) => (
-          <div key={index}>
-            {item[0] === "cout" ? (code.find((c) => c[1] === item[1]) ? code.find((c) => c[1] === item[1])[2] : "") : ""}
-          </div>
-        ))}
+        {sortedCode.map((item, index) => {
+          if (item[0] === "cout") {
+            const val = code.filter((c) => c[0] === "int" && c[1] === item[1]);
+
+            if (val.length === 1) {
+              return (
+                <div key={index}>
+                  {val[0][2]}
+                </div>
+              );
+            } else if (val.length > 1) {
+              return (
+                <div key={index}>
+                  エラー: 変数 {item[1]} が複数、定義されています！<br />
+                </div>
+              );
+            }
+
+          }
+          return null;
+        })}
       </div>
 
       {array.map((item, index) => (
