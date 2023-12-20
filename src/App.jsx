@@ -15,6 +15,16 @@ const App = () => {
     });
   };
 
+  const onDrag = (ui, key) => {
+    const WindowY = (ui.y / window.innerHeight) * 100;
+
+    setCode((prevCode) => {
+      const newCode = [...prevCode];
+      newCode[key] = { ...newCode[key], y: WindowY };
+      return newCode;
+    });
+  };
+
   const addInt = () => {
     const key = array.length;
     setArray([...array, <Int key={key} onAdd={(item) => onAdd(item, key)} />]);
@@ -24,6 +34,8 @@ const App = () => {
     const key = array.length;
     setArray([...array, <Cout key={key} onAdd={(item) => onAdd(item, key)} />]);
   };
+
+  const sortedCode = [...code].sort((a, b) => a.y - b.y);
 
   return (
     <div>
@@ -35,7 +47,7 @@ const App = () => {
         {`#include<iostream>`}<br />
         {`int main() {`}
         <div>
-          {code.map((item, index) => (
+          {sortedCode.map((item, index) => (
             <div key={index}>
               {item[0] === "int" ? `　${item[0]} ${item[1]} = ${item[2]};` : ""}
               {item[0] === "cout" ? `　std::${item[0]} << ${item[1]};` : ""}
@@ -48,16 +60,16 @@ const App = () => {
 
       <div>
         <h2>Terminal</h2>
-        {code.map((item, index) => (
+        {sortedCode.map((item, index) => (
           <div key={index}>
             {item[0] === "cout" ? (code.find((c) => c[1] === item[1]) ? code.find((c) => c[1] === item[1])[2] : "") : ""}
           </div>
         ))}
       </div>
 
-      {array.map((item) => (
-        <Draggable key={item.key}>
-          <div>{item}</div>
+      {array.map((item, index) => (
+        <Draggable key={index} onDrag={(ui) => onDrag(ui, index)}>
+          <div style={{ position: 'absolute' }}>{item}</div>
         </Draggable>
       ))}
     </div>
