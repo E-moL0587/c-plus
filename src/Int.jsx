@@ -5,7 +5,7 @@ function Int({ onAdd }) {
   const [num, setNum] = useState(0);
 
   useEffect(() => {
-    onAdd({ val, num });
+    onAdd(`int ${val} = ${num};`);
   }, [val, num, onAdd]);
 
   return (

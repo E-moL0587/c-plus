@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Draggable from 'react-draggable';
 import Int from './Int';
+import Cout from './Cout';
 
 const App = () => {
   const [array, setArray] = useState([]);
@@ -18,9 +19,7 @@ const App = () => {
       <div>
         <h2>VScode</h2>
         {code.map((item, index) => (
-          <div key={index}>
-            {`int ${item.val} = ${item.num};`}
-          </div>
+          <div key={index}>{item}</div>
         ))}
       </div>
 
