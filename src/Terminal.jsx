@@ -7,14 +7,13 @@ const Terminal = ({ sortedCode }) => {
     backgroundColor: '#1e1e1e',
     color: '#d4d4d4',
     padding: '20px',
-    borderRadius: '5px',
-    maxWidth: '600px',
-    margin: 'auto',
+    borderRadius: '20px',
   };
 
   const codeStyle = {
     fontSize: '14px',
     lineHeight: '1.6',
+    margin: '20px',
   };
 
   return (

@@ -40,21 +40,23 @@ const App = () => {
   };
 
   return (
-    <div>
-      <h2>C-plus</h2>
-      <button onClick={addInt}>変数(int)</button>
-      <button onClick={addCout}>出力(cout)</button>
+    <div style={{ display: 'flex' }}>
+      <div style={{ flex: '1', position: 'relative' }}>
+        <h2>C-plus</h2>
+        <button onClick={addInt}>変数(int)</button>
+        <button onClick={addCout}>出力(cout)</button>
 
-      <div style={{ position: 'fixed', left: '50%', top: 0 }}>
+        {array.map((item, index) => (
+          <Draggable key={index} onDrag={(ui) => onDrag(ui, index)}>
+            <div style={{ position: 'absolute' }}>{item}</div>
+          </Draggable>
+        ))}
+      </div>
+
+      <div style={{ flex: '1', position: 'relative' }}>
         <Editor sortedCode={sortedCode} />
         <Terminal sortedCode={sortedCode} />
       </div>
-
-      {array.map((item, index) => (
-        <Draggable key={index} onDrag={(ui) => onDrag(ui, index)}>
-          <div style={{ position: 'absolute' }}>{item}</div>
-        </Draggable>
-      ))}
     </div>
   );
 };
