@@ -2,6 +2,7 @@ import React from 'react';
 import Int  from './Functions/Int';
 import Cout from './Functions/Cout';
 import Calc from './Functions/Calc';
+import Array from './Functions/Array';
 
 const Control = ({ array, updateArray, updateCode }) => {
 
@@ -36,6 +37,7 @@ const Control = ({ array, updateArray, updateCode }) => {
   const addInt = () => { const key = array.length; updateArray([...array, <Int key={key} onAdd={(item) => onAdd(item, key)} />]); };
   const addCout = () => { const key = array.length; updateArray([...array, <Cout key={key} onAdd={(item) => onAdd(item, key)} />]); };
   const addCalc = () => { const key = array.length; updateArray([...array, <Calc key={key} onAdd={(item) => onAdd(item, key)} />]); };
+  const addArray = () => { const key = array.length; updateArray([...array, <Array key={key} onAdd={(item) => onAdd(item, key)} />]); };
 
   return (
     <div style={editorStyle}>
@@ -44,6 +46,7 @@ const Control = ({ array, updateArray, updateCode }) => {
         <button style={buttonStyle} onClick={addInt}>変数(int)</button>
         <button style={buttonStyle} onClick={addCout}>出力(cout)</button>
         <button style={buttonStyle} onClick={addCalc}>演算(calc)</button>
+        <button style={buttonStyle} onClick={addArray}>配列(array)</button>
       </div>
     </div>
   );

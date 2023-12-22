@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 
-function Int({ onAdd }) {
+function Array({ onAdd }) {
   const [val, setVal] = useState('x');
-  const [num, setNum] = useState(0);
+  const [num, setNum] = useState([0,1,2]);
 
   useEffect(() => {
-    onAdd(["int", val, num], val);
+    onAdd(["array", val, num], val);
   }, [val, num, onAdd]);
 
   const editorStyle = {
@@ -23,8 +23,8 @@ function Int({ onAdd }) {
   return (
     <div style={editorStyle}>
       <h5 style={codeStyle}>
-        Int
-        変数<input type="text" value={val} onChange={(e) => setVal(e.target.value)} size="1" />
+        Array
+        配列<input type="text" value={val} onChange={(e) => setVal(e.target.value)} size="1" />
         に値<input type="text" value={num} onChange={(e) => setNum(e.target.value)} size="1" />
         で定義する
       </h5>
@@ -32,4 +32,4 @@ function Int({ onAdd }) {
   );
 }
 
-export default Int;
+export default Array;
