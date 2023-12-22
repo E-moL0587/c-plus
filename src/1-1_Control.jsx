@@ -20,9 +20,9 @@ const Control = ({ array, updateArray, updateCode }) => {
   };
 
   const buttonStyle = {
-    backgroundColor: '#555555aa',
+    backgroundColor: '#6666aaaa',
     color: '#FFFFFF',
-    marginRight: '10px',
+    marginRight: '4px',
   };
 
   const onAdd = (item, key) => {

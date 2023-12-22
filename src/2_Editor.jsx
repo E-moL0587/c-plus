@@ -23,7 +23,7 @@ const Editor = ({ sortedCode }) => {
         {`#include<iostream>`}<br />
         {`int main() {`}<br />
         {sortedCode.map((item, index) => (
-          <div key={index}>
+          <div key={index} style={{ color: '#569cd6' }}>
             {item[0] === 'int' ? `　${item[0]} ${item[1]} = ${item[2]};` : ''}
             {item[0] === 'cout' ? `　std::${item[0]} << ${item[1]};` : ''}
             {item[0] === 'calc' ? `　${item[1]} = ${item[1]} ${item[3]} ${item[2]};` : ''}
