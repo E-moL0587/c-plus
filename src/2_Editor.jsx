@@ -26,6 +26,7 @@ const Editor = ({ sortedCode }) => {
           <div key={index}>
             {item[0] === 'int' ? `　${item[0]} ${item[1]} = ${item[2]};` : ''}
             {item[0] === 'cout' ? `　std::${item[0]} << ${item[1]};` : ''}
+            {item[0] === 'calc' ? `　${item[1]} = ${item[1]} ${item[3]} ${item[2]};` : ''}
           </div>
         ))}<br />
         {`　return 0;`}<br />

@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 
-function Int({ onAdd }) {
+function Calc({ onAdd }) {
   const [val, setVal] = useState('x');
   const [num, setNum] = useState(0);
+  const [ope, setOpe] = useState('+')
 
   useEffect(() => {
-    onAdd(["int", val, num], val);
-  }, [val, num, onAdd]);
+    onAdd(["calc", val, num, ope], val);
+  }, [val, num, ope, onAdd]);
 
   const editorStyle = {
     fontFamily: 'Consolas, monospace',
@@ -23,13 +24,20 @@ function Int({ onAdd }) {
   return (
     <div style={editorStyle}>
       <h5 style={codeStyle}>
-        Int
+        Calc
         変数<input type="text" value={val} onChange={(e) => setVal(e.target.value)} size="1" />
         に値<input type="text" value={num} onChange={(e) => setNum(e.target.value)} size="1" />
-        を加える
+        を
+        <select value={ope} onChange={(e) => setOpe(e.target.value)}>
+          <option value="+">＋</option>
+          <option value="-">－</option>
+          <option value="*">＊</option>
+          <option value="/">／</option>
+        </select>
+        する
       </h5>
     </div>
   );
 }
 
-export default Int;
+export default Calc;

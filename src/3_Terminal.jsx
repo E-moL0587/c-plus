@@ -16,31 +16,51 @@ const Terminal = ({ sortedCode }) => {
     margin: '20px',
   };
 
-  const renderCodeItem = (item, index, a) => {
-    if (item[0] === "int" && /^-?\d+$/.test(item[1])) { // intかつ数値
+  const renderCodeItem = (item, index, a, b) => {
+    let updatedB = b;
+
+    if (item[0] === "int" && /^-?\d+$/.test(item[1])) { // intかつ数値なら
       return (
-        <div key={index}>
-          エラー: 変数 {item[1]} が 数値 です！<br />
-        </div>
+        <div key={index}>エラー: 変数 {item[1]} が 数値 です！<br /></div>
       );
     }
     if (item[0] === "cout") { // 出力が宣言されてる場合
-      const val = sortedCode.filter((c) => c[0] === "int" && c[1] === a); // それがいくつあるか
+      const val = sortedCode.filter((c) => c[0] === "int" && c[1] === a); // 指定変数がいくつあるか
+      const valC = sortedCode.filter((c) => c[0] === "calc" && c[1] === a); // それがいくつあるか
 
       if (val.length === 1) { // もしひとつあったら
-        return renderCodeItem(item, index, val[0][2]); // 再帰する
+        updatedB += parseFloat(val[0][2]);
+        for (let i = 0; i < valC.length; i++) {
+          const valueToAdd = parseFloat(valC[i][2]);
+          if (valC[i][3] === "+") {
+            updatedB += valueToAdd;
+          } else if (valC[i][3] === "-") {
+            updatedB -= valueToAdd;
+          } else if (valC[i][3] === "*") {
+            updatedB *= valueToAdd;
+          } else if (valC[i][3] === "/") {
+            updatedB /= valueToAdd;
+          }
+        }
+        return renderCodeItem(item, index, val[0][2], updatedB); // 再帰する
       } else if (val.length > 1) { // もし複数定義されてたら
         return (
-          <div key={index}>
-            エラー: 変数 {a} が 複数 定義 されています！<br />
-          </div>
+          <div key={index}>エラー: 変数 {a} が 複数 定義 されています！<br /></div>
         );
       } else if (/^-?\d+$/.test(a)) { // なかったら
-        return (
-          <div key={index}>
-            {a}
-          </div>
-        );
+        if (parseInt(updatedB) === parseFloat(updatedB)) {
+          return (
+            <div key={index}>
+              {parseInt(updatedB)}
+            </div>
+          );
+        } else {
+          return (
+            <div key={index}>
+              {parseInt(updatedB)} ({parseFloat(updatedB).toFixed(5)}...)
+            </div>
+          );
+        }
       } else {
         return (
           <div key={index}>
@@ -56,7 +76,7 @@ const Terminal = ({ sortedCode }) => {
     <div style={editorStyle}>
       <h2 style={{ color: '#569cd6' }}>Terminal</h2>
       <div style={codeStyle}>
-        {sortedCode.map((item, index) => renderCodeItem(item, index, item[1]))}
+        {sortedCode.map((item, index) => renderCodeItem(item, index, item[1], 0))}
       </div>
     </div>
   );
