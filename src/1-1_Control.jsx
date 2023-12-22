@@ -3,6 +3,27 @@ import Int from './Functions/Int';
 import Cout from './Functions/Cout';
 
 const Control = ({ array, updateArray, updateCode }) => {
+
+  const editorStyle = {
+    fontFamily: 'Consolas, monospace',
+    backgroundColor: '#1e1e1e',
+    color: '#d4d4d4',
+    padding: '20px',
+    borderRadius: '20px',
+  };
+
+  const codeStyle = {
+    fontSize: '14px',
+    lineHeight: '1.6',
+    margin: '20px',
+  };
+
+  const buttonStyle = {
+    backgroundColor: '#555555aa',
+    color: '#FFFFFF',
+    marginRight: '10px',
+  };
+
   const onAdd = (item, key) => {
     updateCode((prevCode) => {
       const newCode = [...prevCode];
@@ -22,11 +43,12 @@ const Control = ({ array, updateArray, updateCode }) => {
   };
 
   return (
-    <div>
-      <h2>C-plus</h2>
-      <h4>変数に変数と同じ値を入れたら、再帰して動かなくなります。</h4>
-      <button onClick={addInt}>変数(int)</button>
-      <button onClick={addCout}>出力(cout)</button>
+    <div style={editorStyle}>
+      <div style={codeStyle}>
+        <h2 style={{ color: '#569cd6' }}>C-plus</h2>
+        <button style={buttonStyle} onClick={addInt}>変数(int)</button>
+        <button style={buttonStyle} onClick={addCout}>出力(cout)</button>
+      </div>
     </div>
   );
 };

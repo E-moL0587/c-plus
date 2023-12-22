@@ -11,7 +11,6 @@ function Cout({ onAdd }) {
     fontFamily: 'Consolas, monospace',
     backgroundColor: '#1e1e1e',
     color: '#d4d4d4',
-    borderRadius: '20px',
   };
 
   const codeStyle = {
