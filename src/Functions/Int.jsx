@@ -23,6 +23,7 @@ function Int({ onAdd }) {
   return (
     <div style={editorStyle}>
       <h5 style={codeStyle}>
+        Int
         変数<input type="text" value={val} onChange={(e) => setVal(e.target.value)} size="1" />
         に<input type="text" value={num} onChange={(e) => setNum(e.target.value)} size="1" />
         を加える

@@ -22,6 +22,7 @@ function Cout({ onAdd }) {
   return (
     <div style={editorStyle}>
       <h5 style={codeStyle}>
+        Cout
         変数<input type="text" value={val} onChange={(e) => setVal(e.target.value)} size="1" />
         を出力する
       </h5>
