@@ -25,8 +25,28 @@ const Terminal = ({ sortedCode }) => {
       );
     }
     if (item[0] === "cout") { // 出力が宣言されてる場合
+      const valB = sortedCode.filter((c) => c[0] === "begin" && c[1] === a);
+      if (valB.length === 1) {
+        return (
+          <div key={index}>
+            {valB[0][2].split(',')[valB[0][3]]}
+          </div>
+        );
+      }
+
+      const valA = sortedCode.filter((c) => c[0] === "array" && c[1] === a);
+      if (valA.length === 1) {
+        return (
+          <div key={index}>
+            {valA[0][2]} // できてない
+          </div>
+        );
+      }
+
+
+
       const val = sortedCode.filter((c) => c[0] === "int" && c[1] === a); // 指定変数がいくつあるか
-      const valC = sortedCode.filter((c) => c[0] === "calc" && c[1] === a); // それがいくつあるか
+      const valC = sortedCode.filter((c) => c[0] === "calc" && c[1] === a);
 
       if (val.length === 1) { // もしひとつあったら
         updatedB += parseFloat(val[0][2]);

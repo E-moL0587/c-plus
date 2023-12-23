@@ -26,7 +26,7 @@ function Int({ onAdd }) {
         Int
         変数<input type="text" value={val} onChange={(e) => setVal(e.target.value)} size="1" />
         に値<input type="text" value={num} onChange={(e) => setNum(e.target.value)} size="1" />
-        で定義する
+        を加える
       </h5>
     </div>
   );
