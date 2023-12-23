@@ -34,7 +34,7 @@ function Begin({ onAdd }) {
           <option value="end() -">後</option>
         </select>
         から<input type="text" value={c} onChange={(e) => setC(e.target.value)} size="1" />
-        番目の要素を加える
+        番目の要素を取得する
       </h5>
     </div>
   );
