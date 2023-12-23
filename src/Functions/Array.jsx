@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 function Array({ onAdd }) {
   const [val, setVal] = useState('v');
-  const [num, setNum] = useState([0,1,2]);
+  const [num, setNum] = useState('0,1,2');
 
   useEffect(() => {
     onAdd(["array", val, num], val);

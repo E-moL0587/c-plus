@@ -24,21 +24,24 @@ const Terminal = ({ sortedCode }) => {
         <div key={index}>エラー: 変数 {item[1]} が 数値 です！<br /></div>
       );
     }
+
     if (item[0] === "cout") { // 出力が宣言されてる場合
+      let j = "jjj";
       const valB = sortedCode.filter((c) => c[0] === "begin" && c[1] === a);
-      if (valB.length === 1) {
+      if (valB.length === 1) { j = valB[0][2]; }
+
+      const valA = sortedCode.filter((c) => c[0] === "array" && c[1] === j);
+      if (valA.length !== 1 && valB.length === 1) {
         return (
-          <div key={index}>
-            {valB[0][2].split(',')[valB[0][3]]}
-          </div>
+          <div key={index}>エラー: 配列 {valB[0][2].split(',')[valB[0][3]]} が 定義 されていません！<br /></div>
         );
       }
 
-      const valA = sortedCode.filter((c) => c[0] === "array" && c[1] === a);
-      if (valA.length === 1) {
+      if (valA.length === 1 && valB.length === 1) {
+        const aaa = valA[0][2].split(',');
         return (
           <div key={index}>
-            {valA[0][2]} // できてない
+            {aaa[valB[0][3]]}
           </div>
         );
       }
