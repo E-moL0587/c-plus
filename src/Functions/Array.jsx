@@ -25,7 +25,7 @@ function Array({ onAdd }) {
       <h5 style={codeStyle}>
         Array
         配列<input type="text" value={val} onChange={(e) => setVal(e.target.value)} size="1" />
-        に値<input type="text" value={num} onChange={(e) => setNum(e.target.value)} size="1" />
+        に値<input type="text" value={num} onChange={(e) => setNum(e.target.value)} size="3" />
         を加える
       </h5>
     </div>
