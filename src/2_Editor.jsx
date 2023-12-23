@@ -28,7 +28,7 @@ const Editor = ({ sortedCode }) => {
             {item[0] === 'cout' ? `　std::${item[0]} << ${item[1]};` : ''}
             {item[0] === 'calc' ? `　${item[1]} = ${item[1]} ${item[3]} ${item[2]};` : ''}
             {item[0] === 'array' ? `　std::vector<int> ${item[1]}{${item[2]}};` : ''}
-            {item[0] === 'begin' ? `　int ${item[1]} = ${item[2]}.${item[0]}() + ${item[3]};` : ''}
+            {item[0] === 'begin' ? `　auto ${item[1]} = ${item[2]}.${item[4]} ${item[3]};` : ''}
           </div>
         ))}<br />
         {`　return 0;`}<br />

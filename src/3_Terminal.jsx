@@ -39,11 +39,15 @@ const Terminal = ({ sortedCode }) => {
 
       if (valA.length === 1 && valB.length === 1) {
         const aaa = valA[0][2].split(',');
-        return (
-          <div key={index}>
-            {aaa[valB[0][3]]}
-          </div>
-        );
+        if (valB[0][4] === "begin() +") {
+          return (
+            <div key={index}>{aaa[valB[0][3]]}</div>
+          );
+        } else {
+          return (
+            <div key={index}>{aaa[aaa.length - valB[0][3]]}</div>
+          );
+        }
       }
 
 
