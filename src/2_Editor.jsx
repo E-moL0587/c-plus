@@ -15,11 +15,15 @@ const Editor = ({ sortedCode }) => {
     margin: '20px',
   };
 
+  const valA = sortedCode.find((c) => c[0] === 'array');
+  const valAElement = valA ? <div>{`#include<vector>`}</div> : null;
+
   return (
     <div style={editorStyle}>
       <h2 style={{ color: '#569cd6' }}>Editor</h2>
       <div style={codeStyle}>
         {`#include<iostream>`}<br />
+        {valAElement}
         {`int main() {`}<br />
         {sortedCode.map((item, index) => {
           const valBI = sortedCode.filter((c) => (c[0] === 'begin' || c[0] === 'insert') && c[1] === item[1]);
