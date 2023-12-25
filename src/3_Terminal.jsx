@@ -37,12 +37,12 @@ const Terminal = ({ sortedCode }) => {
 
       if (valA.length === 1 && valI.length === 1) {
         const aaa = valA[0][2].split(',');
-        if (valI[0][4] === "insert") {
-          aaa.splice(valI[0][3], 0, valI[0][5]);
-        } else if (valI[0][4] === "erase") {
+        if (valI[0][5] === "insert") {
+          aaa.splice(valI[0][3], 0, valI[0][4]);
+        } else if (valI[0][5] === "erase") {
           aaa.splice(valI[0][3], 1);
         } else {
-          aaa.splice(valI[0][3], 1, valI[0][5]);
+          aaa.splice(valI[0][3], 1, valI[0][4]);
         }
         const bbb = aaa.join(',');
         return (
@@ -55,19 +55,19 @@ const Terminal = ({ sortedCode }) => {
 
       if (valA.length !== 1 && valB.length === 1) {
         return (
-          <div key={index}>エラー: 配列 {valB[0][2].split(',')[valB[0][3]]} が 定義 されていません！<br /></div>
+          <div key={index}>エラー: 配列 {valB[0][2].split(',')[valB[0][4]]} が 定義 されていません！<br /></div>
         );
       }
 
       if (valA.length === 1 && valB.length === 1) {
         const aaa = valA[0][2].split(',');
-        if (valB[0][4] === "begin() +") {
+        if (valB[0][3] === "begin() +") {
           return (
-            <div key={index}>{aaa[valB[0][3]]}</div>
+            <div key={index}>{aaa[valB[0][4]]}</div>
           );
         } else {
           return (
-            <div key={index}>{aaa[aaa.length - valB[0][3]]}</div>
+            <div key={index}>{aaa[aaa.length - valB[0][4]]}</div>
           );
         }
       }

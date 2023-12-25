@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 
 function Array({ onAdd }) {
-  const [val, setVal] = useState('v');
-  const [num, setNum] = useState('0,1,2');
+  const [a, setA] = useState('v');
+  const [b, setB] = useState('0,1,2');
 
   useEffect(() => {
-    onAdd(["array", val, num], val);
-  }, [val, num, onAdd]);
+    onAdd(["array", a, b], a);
+  }, [a, b, onAdd]);
 
   const editorStyle = {
     fontFamily: 'Consolas, monospace',
@@ -24,8 +24,8 @@ function Array({ onAdd }) {
     <div style={editorStyle}>
       <h5 style={codeStyle}>
         Array
-        配列<input type="text" value={val} onChange={(e) => setVal(e.target.value)} size="1" />
-        に値<input type="text" value={num} onChange={(e) => setNum(e.target.value)} size="3" />
+        配列<input type="text" value={a} onChange={(e) => setA(e.target.value)} size="1" />
+        に値<input type="text" value={b} onChange={(e) => setB(e.target.value)} size="3" />
         を加える
       </h5>
     </div>

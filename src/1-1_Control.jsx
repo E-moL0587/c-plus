@@ -1,10 +1,10 @@
 import React from 'react';
-import Int  from './Functions/Int';
-import Cout from './Functions/Cout';
-import Calc from './Functions/Calc';
-import Array from './Functions/Array';
-import Begin from './Functions/Begin';
-import Insert from './Functions/Insert';
+import Int  from './Functions/1_Int';
+import Cout from './Functions/2_Cout';
+import Calc from './Functions/3_Calc';
+import Array from './Functions/4_Array';
+import Begin from './Functions/5_Begin';
+import Insert from './Functions/6_Insert';
 
 const Control = ({ array, updateArray, updateCode }) => {
 

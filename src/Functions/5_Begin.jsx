@@ -3,8 +3,8 @@ import React, { useState, useEffect } from 'react';
 function Begin({ onAdd }) {
   const [a, setA] = useState('x');
   const [b, setB] = useState('v');
-  const [c, setC] = useState(0);
-  const [d, setD] = useState('begin() +');
+  const [c, setC] = useState('begin() +');
+  const [d, setD] = useState(0);
 
   useEffect(() => {
     onAdd(["begin", a, b, c, d], a);
@@ -29,11 +29,11 @@ function Begin({ onAdd }) {
         変数<input type="text" value={a} onChange={(e) => setA(e.target.value)} size="1" />
         が配列<input type="text" value={b} onChange={(e) => setB(e.target.value)} size="1" />
         の
-        <select value={d} onChange={(e) => setD(e.target.value)}>
+        <select value={c} onChange={(e) => setC(e.target.value)}>
           <option value="begin() +">前</option>
           <option value="end() -">後</option>
         </select>
-        から<input type="text" value={c} onChange={(e) => setC(e.target.value)} size="1" />
+        から<input type="text" value={d} onChange={(e) => setD(e.target.value)} size="1" />
         番目の要素を取得する
       </h5>
     </div>
