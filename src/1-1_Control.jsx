@@ -49,10 +49,10 @@ const Control = ({ array, updateArray, updateCode }) => {
         <h2 style={{ color: '#569cd6' }}>C-plus</h2>
         <button style={buttonStyle} onClick={addInt}>変数(int)</button>
         <button style={buttonStyle} onClick={addCout}>出力(cout)</button>
-        <button style={buttonStyle} onClick={addCalc}>演算(calc)</button>
-        <button style={buttonStyle} onClick={addArray}>配列(array)</button>
-        <button style={buttonStyle} onClick={addBegin}>取得(begin)</button>
-        <button style={buttonStyle} onClick={addInsert}>追加(insert)</button>
+        <button style={buttonStyle} onClick={addCalc}>四則演算</button>
+        <button style={buttonStyle} onClick={addArray}>動的配列(vector)</button>
+        <button style={buttonStyle} onClick={addBegin}>イテレータ取得(begin, end)</button>
+        <button style={buttonStyle} onClick={addInsert}>編集処理(insert, erase, replace)</button>
       </div>
     </div>
   );

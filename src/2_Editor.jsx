@@ -1,7 +1,6 @@
 import React from 'react';
 
 const Editor = ({ sortedCode }) => {
-
   const editorStyle = {
     fontFamily: 'Consolas, monospace',
     backgroundColor: '#1e1e1e',
@@ -22,19 +21,23 @@ const Editor = ({ sortedCode }) => {
       <div style={codeStyle}>
         {`#include<iostream>`}<br />
         {`int main() {`}<br />
-        {sortedCode.map((item, index) => (
-          <div key={index} style={{ color: '#569cd6' }}>
-            {item[0] === 'int' ? `　${item[0]} ${item[1]} = ${item[2]};` : ''}
-            {item[0] === 'cout' ? `　std::${item[0]} << ${item[1]};` : ''}
-            {item[0] === 'calc' ? `　${item[1]} = ${item[1]} ${item[3]} ${item[2]};` : ''}
-            {item[0] === 'array' ? `　std::vector<int> ${item[1]}{${item[2]}};` : ''}
-            {item[0] === 'begin' ? `　auto ${item[1]} = ${item[2]}.${item[4]} ${item[3]};` : ''}
-            {item[0] === 'insert' && item[4] === 'insert'  ? `　auto ${item[1]} = ${item[2]}.${item[4]}(${item[1]} + ${item[3]}, ${item[5]});` : ''}
-            {item[0] === 'insert' && item[4] === 'erase'   ? `　auto ${item[1]} = ${item[2]}.${item[4]}(${item[1]} + ${item[3]});` : ''}
-            {item[0] === 'insert' && item[4] === 'replace' ? `　auto ${item[1]} = ${item[2]}.${item[4]}(${item[1]} + ${item[3]}, 0, ${item[5]});` : ''}
-          </div>
-        ))}<br />
-        {`　return 0;`}<br />
+        {sortedCode.map((item, index) => {
+          const valBI = sortedCode.filter((c) => (c[0] === 'begin' || c[0] === 'insert') && c[1] === item[1]);
+
+          return (
+            <div key={index} style={{ color: '#569cd6', paddingLeft: '1em' }}>
+              {item[0] === 'int' ? `  ${item[0]} ${item[1]} = ${item[2]};` : ''}
+              {item[0] === 'cout' ? `  std::${item[0]} << ${valBI.length ? '*' : ''}${item[1]};` : ''}
+              {item[0] === 'calc' ? `  ${item[1]} = ${item[1]} ${item[3]} ${item[2]};` : ''}
+              {item[0] === 'array' ? `  std::vector<int> ${item[1]}{${item[2]}};` : ''}
+              {item[0] === 'begin' ? `  auto ${item[1]} = ${item[2]}.${item[4]} ${item[3]};` : ''}
+              {item[0] === 'insert' && item[4] === 'insert' ? `  auto ${item[1]} = ${item[2]}.${item[4]}(${item[1]} + ${item[3]}, ${item[5]});` : ''}
+              {item[0] === 'insert' && item[4] === 'erase' ? `  auto ${item[1]} = ${item[2]}.${item[4]}(${item[1]} + ${item[3]});` : ''}
+              {item[0] === 'insert' && item[4] === 'replace' ? `  auto ${item[1]} = ${item[2]}.${item[4]}(${item[1]} + ${item[3]}, 0, ${item[5]});` : ''}
+            </div>
+          );
+        })}<br />
+        <div style={{ paddingLeft: '1em' }}>{`  return 0;`}</div>
         {`}`}<br />
       </div>
     </div>
