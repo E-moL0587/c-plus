@@ -27,14 +27,14 @@ function Calc({ onAdd }) {
         Calc
         変数<input type="text" value={val} onChange={(e) => setVal(e.target.value)} size="1" />
         に値<input type="text" value={num} onChange={(e) => setNum(e.target.value)} size="1" />
-        を
+        を代入演算子
         <select value={ope} onChange={(e) => setOpe(e.target.value)}>
           <option value="+">＋</option>
           <option value="-">－</option>
           <option value="*">＊</option>
           <option value="/">／</option>
         </select>
-        する
+        で更新する
       </h5>
     </div>
   );

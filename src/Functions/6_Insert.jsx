@@ -27,25 +27,25 @@ function Insert({ onAdd }) {
     <div style={editorStyle}>
       <h5 style={codeStyle}>
         Insert
-        変数<input type="text" value={a} onChange={(e) => setA(e.target.value)} size="1" />
-        が配列<input type="text" value={b} onChange={(e) => setB(e.target.value)} size="1" />
+        配列<input type="text" value={b} onChange={(e) => setB(e.target.value)} size="1" />
         の<input type="text" value={c} onChange={(e) => setC(e.target.value)} size="1" />
-        番目
+        番目の位置
         
-        {d !== "erase" && (
+        {e !== "erase" ? (
           <>
-            に値
-            <input type="text" value={d} onChange={(e) => setD(e.target.value)} size="1" />
+            に値<input type="text" value={d} onChange={(e) => setD(e.target.value)} size="1" />
+            を
           </>
+        ):(
+          <>の値を</>
         )}
 
-        を
         <select value={e} onChange={(e) => setE(e.target.value)}>
           <option value="insert">挿入</option>
           <option value="erase">削除</option>
           <option value="replace">置換</option>
         </select>
-        し取得する
+        する
       </h5>
     </div>
   );

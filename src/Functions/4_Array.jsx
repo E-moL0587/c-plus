@@ -24,9 +24,9 @@ function Array({ onAdd }) {
     <div style={editorStyle}>
       <h5 style={codeStyle}>
         Array
-        配列<input type="text" value={a} onChange={(e) => setA(e.target.value)} size="1" />
-        に値<input type="text" value={b} onChange={(e) => setB(e.target.value)} size="3" />
-        を加える
+        変数<input type="text" value={a} onChange={(e) => setA(e.target.value)} size="1" />
+        の宣言と初期配列<input type="text" value={b} onChange={(e) => setB(e.target.value)} size="3" />
+        の指定をする
       </h5>
     </div>
   );

@@ -30,9 +30,9 @@ const Editor = ({ sortedCode }) => {
 
           return (
             <div key={index} style={{ color: '#569cd6', paddingLeft: '1em' }}>
-              {item[0] === 'int' ? `  ${item[0]} ${item[1]} = ${item[2]};` : ''}
+              {item[0] === 'int' ? `  ${item[0]} ${item[1]}{${item[2]}};` : ''}
               {item[0] === 'cout' ? `  std::${item[0]} << ${valBI.length ? '*' : ''}${item[1]};` : ''}
-              {item[0] === 'calc' ? `  ${item[1]} = ${item[1]} ${item[3]} ${item[2]};` : ''}
+              {item[0] === 'calc' ? `  ${item[1]} ${item[3]}= ${item[2]};` : ''}
               {item[0] === 'array' ? `  std::vector<int> ${item[1]}{${item[2]}};` : ''}
               {item[0] === 'begin' ? `  auto ${item[1]} = ${item[2]}.${item[3]} ${item[4]};` : ''}
               {item[0] === 'insert' && item[5] === 'insert' ? `  auto ${item[1]} = ${item[2]}.${item[5]}(${item[1]} + ${item[3]}, ${item[4]});` : ''}
