@@ -30,7 +30,29 @@ const Terminal = ({ sortedCode }) => {
       const valB = sortedCode.filter((c) => c[0] === "begin" && c[1] === a);
       if (valB.length === 1) { j = valB[0][2]; }
 
+      const valI = sortedCode.filter((c) => c[0] === "insert" && c[1] === a);
+      if (valI.length === 1) { j = valI[0][2]; }
+
       const valA = sortedCode.filter((c) => c[0] === "array" && c[1] === j);
+
+      if (valA.length === 1 && valI.length === 1) {
+        const aaa = valA[0][2].split(',');
+        if (valI[0][4] === "insert") {
+          aaa.splice(valI[0][3], 0, valI[0][5]);
+        } else if (valI[0][4] === "erase") {
+          aaa.splice(valI[0][3], 1);
+        } else {
+          aaa.splice(valI[0][3], 1, valI[0][5]);
+        }
+        const bbb = aaa.join(',');
+        return (
+          <div key={index}>[{bbb}]</div>
+        );
+      }
+
+
+
+
       if (valA.length !== 1 && valB.length === 1) {
         return (
           <div key={index}>エラー: 配列 {valB[0][2].split(',')[valB[0][3]]} が 定義 されていません！<br /></div>

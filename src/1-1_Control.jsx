@@ -4,6 +4,7 @@ import Cout from './Functions/Cout';
 import Calc from './Functions/Calc';
 import Array from './Functions/Array';
 import Begin from './Functions/Begin';
+import Insert from './Functions/Insert';
 
 const Control = ({ array, updateArray, updateCode }) => {
 
@@ -40,6 +41,7 @@ const Control = ({ array, updateArray, updateCode }) => {
   const addCalc = () => { const key = array.length; updateArray([...array, <Calc key={key} onAdd={(item) => onAdd(item, key)} />]); };
   const addArray = () => { const key = array.length; updateArray([...array, <Array key={key} onAdd={(item) => onAdd(item, key)} />]); };
   const addBegin = () => { const key = array.length; updateArray([...array, <Begin key={key} onAdd={(item) => onAdd(item, key)} />]); };
+  const addInsert = () => { const key = array.length; updateArray([...array, <Insert key={key} onAdd={(item) => onAdd(item, key)} />]); };
 
   return (
     <div style={editorStyle}>
@@ -49,7 +51,8 @@ const Control = ({ array, updateArray, updateCode }) => {
         <button style={buttonStyle} onClick={addCout}>出力(cout)</button>
         <button style={buttonStyle} onClick={addCalc}>演算(calc)</button>
         <button style={buttonStyle} onClick={addArray}>配列(array)</button>
-        <button style={buttonStyle} onClick={addBegin}>イテレータ(begin)</button>
+        <button style={buttonStyle} onClick={addBegin}>取得(begin)</button>
+        <button style={buttonStyle} onClick={addInsert}>追加(insert)</button>
       </div>
     </div>
   );
