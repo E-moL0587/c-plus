@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 const Terminal = ({ sortedCode }) => {
 
@@ -16,8 +16,18 @@ const Terminal = ({ sortedCode }) => {
     margin: '20px',
   };
 
+  // memo
+  // int xに 0宣言
+  // cout xを出力
+  // calc xに 0 +する
+  // array vに [0,1,2]宣言
+  // begin xに vの 先頭から 0番目取得
+  // insert xに vの 0番目に 3を 挿入
+
   const renderCodeItem = (item, index, a, b) => {
     let updatedB = b;
+
+    // 番目の位置、出力結果の訂正
 
     if (item[0] === "int" && /^-?\d+$/.test(item[1])) { // intかつ数値なら
       return (

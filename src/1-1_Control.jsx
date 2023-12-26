@@ -47,12 +47,12 @@ const Control = ({ array, updateArray, updateCode }) => {
     <div style={editorStyle}>
       <div style={codeStyle}>
         <h2 style={{ color: '#569cd6' }}>C-plus</h2>
-        <button style={buttonStyle} onClick={addInt}>変数(int)</button>
-        <button style={buttonStyle} onClick={addCout}>出力(cout)</button>
+        <button style={buttonStyle} onClick={addInt}>変数宣言</button>
+        <button style={buttonStyle} onClick={addCout}>出力</button>
         <button style={buttonStyle} onClick={addCalc}>四則演算</button>
-        <button style={buttonStyle} onClick={addArray}>動的配列(vector)</button>
-        <button style={buttonStyle} onClick={addBegin}>イテレータ取得(begin, end)</button>
-        <button style={buttonStyle} onClick={addInsert}>編集処理(insert, erase, replace)</button>
+        <button style={buttonStyle} onClick={addArray}>配列宣言</button>
+        <button style={buttonStyle} onClick={addBegin}>イテレータ取得</button>
+        <button style={buttonStyle} onClick={addInsert}>イテレータ置換・変換</button>
       </div>
     </div>
   );
