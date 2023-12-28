@@ -10,7 +10,7 @@ function Array({ onAdd }) {
 
   const editorStyle = {
     fontFamily: 'Consolas, monospace',
-    backgroundColor: '#1e1e1e',
+    backgroundColor: '#FF3D00',
     color: '#d4d4d4',
   };
 

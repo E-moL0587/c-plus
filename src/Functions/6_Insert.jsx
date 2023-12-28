@@ -13,7 +13,7 @@ function Insert({ onAdd }) {
 
   const editorStyle = {
     fontFamily: 'Consolas, monospace',
-    backgroundColor: '#1e1e1e',
+    backgroundColor: '#007ACC',
     color: '#d4d4d4',
   };
 

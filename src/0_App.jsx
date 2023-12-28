@@ -25,7 +25,7 @@ const App = () => {
 
   return (
     <div style={{ display: 'flex' }}>
-      <div style={{ flex: '1', position: 'relative' }}>
+      <div style={{ zIndex: 2, flex: '1', position: 'relative' }}>
         <Control array={array} updateArray={updateArray} updateCode={updateCode} />
 
         {array.map((item, index) => (
@@ -33,7 +33,7 @@ const App = () => {
         ))}
       </div>
 
-      <div style={{ flex: '1', position: 'relative' }}>
+      <div style={{ zIndex: 1, flex: '1', position: 'relative' }}>
         <Editor sortedCode={sortedCode} />
         <Terminal sortedCode={sortedCode} />
       </div>

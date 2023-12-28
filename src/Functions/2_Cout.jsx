@@ -9,7 +9,7 @@ function Cout({ onAdd }) {
 
   const editorStyle = {
     fontFamily: 'Consolas, monospace',
-    backgroundColor: '#1e1e1e',
+    backgroundColor: '#8B0000',
     color: '#d4d4d4',
   };
 
