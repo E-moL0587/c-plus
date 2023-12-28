@@ -88,17 +88,20 @@ const Terminal = ({ sortedCode }) => {
 
 
       if (Int.length === 1) { // もしひとつあったら
-        updatedB += parseFloat(Int[0][2]);
-        for (let i = 0; i < Calc.length; i++) {
-          const valueToAdd = parseFloat(Calc[i][2]);
-          if (Calc[i][3] === "+") {
-            updatedB += valueToAdd;
-          } else if (Calc[i][3] === "-") {
-            updatedB -= valueToAdd;
-          } else if (Calc[i][3] === "*") {
-            updatedB *= valueToAdd;
-          } else if (Calc[i][3] === "/") {
-            updatedB /= valueToAdd;
+        if (/^-?\d+$/.test(Int[0][2])) {
+
+          updatedB += parseFloat(Int[0][2]);
+          for (let i = 0; i < Calc.length; i++) {
+            const valueToAdd = parseFloat(Calc[i][2]);
+            if (Calc[i][3] === "+") {
+              updatedB += valueToAdd;
+            } else if (Calc[i][3] === "-") {
+              updatedB -= valueToAdd;
+            } else if (Calc[i][3] === "*") {
+              updatedB *= valueToAdd;
+            } else if (Calc[i][3] === "/") {
+              updatedB /= valueToAdd;
+            }
           }
         }
         return renderCodeItem(item, index, Int[0][2], updatedB); // 再帰する
