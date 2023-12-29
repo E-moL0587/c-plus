@@ -16,13 +16,13 @@ const Terminal = ({ sortedCode }) => {
     margin: '20px',
   };
 
-  // 0      1       2          3       4          5
+  // 0      1       2          3       4
   // int    xに     0宣言
   // cout   xを出力
   // calc   xに     0          +する
   // array  vに    [0,1,2]宣言
   // begin  xに     vの        先頭から 0番目取得
-  // insert xに     vの        0番目に  3を       挿入
+  // insert vの     0番目に     3を     挿入
 
   const renderCodeItem = (item, index, a, b) => {
     let updatedB = b;
