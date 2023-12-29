@@ -30,9 +30,7 @@ const Terminal = ({ sortedCode }) => {
     // 番目の位置、出力結果の訂正
 
     if (item[0] === "int" && /^-?\d+$/.test(item[1])) { // intかつ数値なら
-      return (
-        <div key={index}>エラー: 変数 {item[1]} が 数値 です！<br /></div>
-      );
+      return (<div key={index}>エラー: 変数名 {item[1]} が 数値 です！</div>);
     }
 
     if (item[0] === "cout") { // 出力が宣言されてる場合
@@ -41,95 +39,76 @@ const Terminal = ({ sortedCode }) => {
       if (Begin.length === 1) { j = Begin[0][2]; }
 
       const Insert = sortedCode.filter((c) => c[0] === "insert" && c[1] === a);
-      if (Insert.length === 1) { j = Insert[0][2]; }
+      if (Insert.length === 1) { j = Insert[0][1]; }
 
       const Array = sortedCode.filter((c) => c[0] === "array" && c[1] === j);
       const Int = sortedCode.filter((c) => c[0] === "int" && c[1] === a); // 指定変数がいくつあるか
       const Calc = sortedCode.filter((c) => c[0] === "calc" && c[1] === a);
+      const Array2 = sortedCode.filter((c) => c[0] === "array" && c[1] === a);
 
-      if (Array.length === 1 && Insert.length === 1) {
-        const aaa = Array[0][2].split(',');
-        if (Insert[0][5] === "insert") {
-          aaa.splice(Insert[0][3], 0, Insert[0][4]);
-        } else if (Insert[0][5] === "erase") {
-          aaa.splice(Insert[0][3], 1);
+      const len = Int.length + Begin.length + Array2.length;
+
+      // Int
+      if (/^-?\d+$/.test(a)) { // 整数だったら
+        if (parseInt(updatedB) === parseFloat(updatedB)) {
+          return (<div key={index}>{parseInt(updatedB)}</div>);
         } else {
-          aaa.splice(Insert[0][3], 1, Insert[0][4]);
+          return (<div key={index}>{parseInt(updatedB)} ({parseFloat(updatedB).toFixed(5)}...)</div>);
         }
-        const bbb = aaa.join(',');
-        return (
-          <div key={index}>[{bbb}]</div>
-        );
       }
 
-
-
+      if (len > 1)   return (<div key={index}>エラー: 変数 {a} が 複数 定義 されています！</div>);
+      if (len === 0) return (<div key={index}>エラー: 変数 {a} が 定義 されてません！</div>);
 
       if (Array.length !== 1 && Begin.length === 1) {
-        return (
-          <div key={index}>エラー: 配列 {Begin[0][2].split(',')[Begin[0][4]]} が 定義 されていません！<br /></div>
-        );
+        return (<div key={index}>エラー: 配列 {Begin[0][2].split(',')[Begin[0][4]]} が 定義 されていません！</div>);
       }
 
-      if (Array.length === 1 && Begin.length === 1) {
-        const aaa = Array[0][2].split(',');
-        if (Begin[0][3] === "begin() +") {
-          return (
-            <div key={index}>{aaa[Begin[0][4]]}</div>
-          );
-        } else {
-          return (
-            <div key={index}>{aaa[aaa.length - Begin[0][4]]}</div>
-          );
-        }
-      }
-
-
-
-
+      // Calc
       if (Int.length === 1) { // もしひとつあったら
         if (/^-?\d+$/.test(Int[0][2])) {
-
           updatedB += parseFloat(Int[0][2]);
+
           for (let i = 0; i < Calc.length; i++) {
             const valueToAdd = parseFloat(Calc[i][2]);
-            if (Calc[i][3] === "+") {
-              updatedB += valueToAdd;
-            } else if (Calc[i][3] === "-") {
-              updatedB -= valueToAdd;
-            } else if (Calc[i][3] === "*") {
-              updatedB *= valueToAdd;
-            } else if (Calc[i][3] === "/") {
-              updatedB /= valueToAdd;
+            if (Calc[i][3] === "+") { updatedB += valueToAdd;
+            } else if (Calc[i][3] === "-") { updatedB -= valueToAdd;
+            } else if (Calc[i][3] === "*") { updatedB *= valueToAdd;
+            } else if (Calc[i][3] === "/") { updatedB /= valueToAdd;
             }
           }
         }
         return renderCodeItem(item, index, Int[0][2], updatedB); // 再帰する
-      } else if (Int.length > 1) { // もし複数定義されてたら
-        return (
-          <div key={index}>エラー: 変数 {a} が 複数 定義 されています！<br /></div>
-        );
-      } else if (/^-?\d+$/.test(a)) { // 整数だったら
-        if (parseInt(updatedB) === parseFloat(updatedB)) {
-          return (
-            <div key={index}>
-              {parseInt(updatedB)}
-            </div>
-          );
-        } else {
-          return (
-            <div key={index}>
-              {parseInt(updatedB)} ({parseFloat(updatedB).toFixed(5)}...)
-            </div>
-          );
-        }
-      } else {
-        return (
-          <div key={index}>
-            エラー: 変数 {a} が 定義 されてません！<br />
-          </div>
-        );
       }
+
+      // Begin
+      if (Array.length === 1 && Begin.length === 1) {
+        const aaa = Array[0][2].split(',');
+        if (Begin[0][3] === "begin() +") {
+          return (<div key={index}>{aaa[Begin[0][4]]}</div>);
+        } else {
+          return (<div key={index}>{aaa[aaa.length - Begin[0][4]]}</div>);
+        }
+      }
+
+      // Insert
+      if (Array.length === 1 && Insert.length === 1) {
+        const aaa = Array[0][2].split(',');
+        if (/^-?\d+$/.test(Insert[0][3])) {
+        if (Insert[0][4] === "insert") {
+          aaa.splice(Insert[0][2], 0, Insert[0][3]);
+        } else if (Insert[0][4] === "erase") {
+          aaa.splice(Insert[0][2], 1);
+        } else {
+          aaa.splice(Insert[0][2], 1, Insert[0][3]);
+        }
+        const bbb = aaa.join(',');
+        return (<div key={index}>[{bbb}]</div>);
+        } else {
+          return (<div key={index}>{Insert[0][3]}が整数ではない</div>);
+        }
+      }
+
     }
     return null;
   };

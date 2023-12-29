@@ -35,9 +35,9 @@ const Editor = ({ sortedCode }) => {
               {item[0] === 'calc' ? `  ${item[1]} ${item[3]}= ${item[2]};` : ''}
               {item[0] === 'array' ? `  std::vector<int> ${item[1]}{${item[2]}};` : ''}
               {item[0] === 'begin' ? `  auto ${item[1]} = ${item[2]}.${item[3]} ${item[4]};` : ''}
-              {item[0] === 'insert' && item[5] === 'insert' ? `  auto ${item[1]} = ${item[2]}.${item[5]}(${item[2]}.begin() + ${item[3]}, ${item[4]});` : ''}
-              {item[0] === 'insert' && item[5] === 'erase' ? `  auto ${item[1]} = ${item[2]}.${item[5]}(${item[2]}.begin() + ${item[3]});` : ''}
-              {item[0] === 'insert' && item[5] === 'replace' ? `  auto ${item[1]} = ${item[2]}.${item[5]}(${item[2]}.begin() + ${item[3]}, 0, ${item[4]});` : ''}
+              {item[0] === 'insert' && item[4] === 'insert' ? `  ${item[1]}.${item[4]}(${item[1]}.begin() + ${item[2]}, ${item[3]});` : ''}
+              {item[0] === 'insert' && item[4] === 'erase' ? `  ${item[1]}.${item[4]}(${item[1]}.begin() + ${item[2]});` : ''}
+              {item[0] === 'insert' && item[4] === 'replace' ? `  ${item[1]}.${item[4]}(${item[1]}.begin() + ${item[2]}, 0, ${item[3]});` : ''}
             </div>
           );
         })}<br />

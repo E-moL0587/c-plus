@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from 'react';
 
 function Insert({ onAdd }) {
-  const [a, setA] = useState('x');
-  const [b, setB] = useState('v');
-  const [c, setC] = useState(0);
-  const [d, setD] = useState(3);
-  const [e, setE] = useState('insert');
+  const [a, setA] = useState('v');
+  const [b, setB] = useState(0);
+  const [c, setC] = useState(3);
+  const [d, setD] = useState('insert');
 
   useEffect(() => {
-    onAdd(["insert", a, b, c, d, e], a);
-  }, [a, b, c, d, e, onAdd]);
+    onAdd(["insert", a, b, c, d], a);
+  }, [a, b, c, d, onAdd]);
 
   const editorStyle = {
     fontFamily: 'Consolas, monospace',
@@ -27,20 +26,20 @@ function Insert({ onAdd }) {
     <div style={editorStyle}>
       <h5 style={codeStyle}>
         Insert
-        配列<input type="text" value={b} onChange={(e) => setB(e.target.value)} size="1" />
-        の<input type="text" value={c} onChange={(e) => setC(e.target.value)} size="1" />
+        配列<input type="text" value={a} onChange={(e) => setA(e.target.value)} size="1" />
+        の<input type="text" value={b} onChange={(e) => setB(e.target.value)} size="1" />
         番目の位置
         
-        {e !== "erase" ? (
+        {d !== "erase" ? (
           <>
-            に値<input type="text" value={d} onChange={(e) => setD(e.target.value)} size="1" />
+            に値<input type="text" value={c} onChange={(e) => setC(e.target.value)} size="1" />
             を
           </>
         ):(
           <>の値を</>
         )}
 
-        <select value={e} onChange={(e) => setE(e.target.value)}>
+        <select value={d} onChange={(e) => setD(e.target.value)}>
           <option value="insert">挿入</option>
           <option value="erase">削除</option>
           <option value="replace">置換</option>
